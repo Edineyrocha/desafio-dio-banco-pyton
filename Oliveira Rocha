@@ -1,0 +1,62 @@
+#Banco Digital 1.
+
+saldo = 0
+limite = 500.00
+extrato = ""
+numero_saques = 0
+LIMITE_SAQUES = 3
+Valor_depositado = 0.0
+numero_deposito = 0
+Valor_sacado = 0.0
+
+while True:
+    
+    print("""******************Banco Digital******************
+         Utilize uma das opções abaixo:
+         
+         
+        1 - Depositar
+        2 - Sacar
+        3 - Extrato
+        4 - Sair""")
+
+    menu = int(input())
+
+    if menu == 1:
+        print("qual o valor do depósito?")
+        valor_deposito = float(input())
+        saldo += valor_deposito
+        Valor_depositado += valor_deposito
+        numero_deposito += 1 
+    
+
+    elif menu == 2:
+        print("qual o valor do saque limitado a 500 reais.")
+        valor_saque = float(input())
+        if saldo < valor_saque or LIMITE_SAQUES == 0 or valor_saque > 500 :
+            print("operação não realizada devido limites excedidos")
+            input()
+        else:
+            saldo -= valor_saque
+            numero_saques += 1
+            Valor_sacado += valor_saque
+            limite = limite - valor_saque
+            print("operção realizada")
+            input()
+        
+
+    
+    elif menu == 3:
+        print(f""" Foram efetuados {numero_saques} saques!
+                    o valor total dos saques foi de {Valor_sacado}.
+                    Foram efeutados {numero_deposito} depósitos!
+                    o valor total dos Depósitos foi de {Valor_depositado }
+                     
+                    Saldo atual = {saldo}""" )
+        input()
+    elif menu == 4:
+        break
+
+    else:
+        print("digite uma opção válida")
+        input()
